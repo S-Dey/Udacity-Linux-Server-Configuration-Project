@@ -85,7 +85,7 @@ You now have a public and private key that you can use to authenticate. The publ
  
  As the droplet has now been created, you can log in via root by running the following command in your host machine:
  
- ```console
+ ```
     $ ssh root@206.189.151.124
  ```
  
@@ -93,4 +93,8 @@ You now have a public and private key that you can use to authenticate. The publ
  
  ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
  
- 
+ Now run the following command to update the system:
+
+```
+ $ sudo apt update && sudo apt upgrade
+```
