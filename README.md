@@ -315,7 +315,7 @@ If the installation has succeeded, you should see the following Web page:
    $ sudo apt install python3
    ```
 
-2. After the installation og Python 3.6 has succeeded, install `pip3`. To install it, run the following command:
+2. After the installation of Python 3.6 has succeeded, you'll have to install `pip3` to install certain packages later. To install it, run the following command:
 
    ```
    $ sudo apt install python3-pip
@@ -327,7 +327,7 @@ If the installation has succeeded, you should see the following Web page:
    $ pip3 --version
    ```
 
-   You should see something like this:
+   You should see something like this if it has been successfully installed:
    
    ```
    pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
