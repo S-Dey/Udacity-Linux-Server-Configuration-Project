@@ -446,6 +446,38 @@ $ sudo service apache2 restart
             └── view-item.html
     ```
 
+#### 14.3. Setting Up Virtual Hosts
+
+1. Run the following command in terminal to set up a file called `FlaskApp.conf` to configure the virtual hosts:
+
+   ```
+   sudo nano /etc/apache2/sites-available/FlaskApp.conf
+   ```
+
+2. Add the following lines to it:
+
+   ```
+   <VirtualHost *:80>
+      ServerName 206.189.151.124
+      ServerAdmin contact@subhadeepdey.com
+      WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+      <Directory /var/www/FlaskApp/FlaskApp/>
+        Order allow,deny
+        Allow from all
+      </Directory>
+      Alias /static /var/www/FlaskApp/FlaskApp/static
+      <Directory /var/www/FlaskApp/FlaskApp/static/>
+        Order allow,deny
+        Allow from all
+      </Directory>
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      LogLevel warn
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+  </VirtualHost>
+```
+
+
+
 ## References
 
 [1] <https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04>
