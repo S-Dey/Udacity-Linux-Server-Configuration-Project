@@ -413,7 +413,7 @@ $ sudo service apache2 restart
    The directory tree should now look like this:
 
    ```
-   ..
+   FlaskApp
     └── FlaskApp
         ├── LICENSE
         ├── README.md
