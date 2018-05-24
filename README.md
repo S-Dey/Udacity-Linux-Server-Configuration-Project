@@ -57,6 +57,12 @@ The key's randomart image is:
 
 You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the private key is called `udacity_project`. 
 
-### 2. Set up Account on DigitalOcean and Add SSH Keys
+### 2. Set up a Droplet on DigitalOcean and Add SSH Keys
 
-The next step is to set up an account on [DigtalOcean](https://cloud.digitalocean.com/login) or log in if you already have an account.
+1. Log in or create an account on [DigtalOcean](https://cloud.digitalocean.com/login).
+
+2. Go to the Dashboard, and click "Create Droplet".  
+
+3. Choose "Ubuntu 18.04 x64" image from the list of given images.
+
+4. Choose a preferred size. In this project, I have chosen 1GB/1 vCPU/25GB configuration.
