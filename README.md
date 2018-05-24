@@ -211,7 +211,7 @@ To                         Action      From
    Is the information correct? [Y/n]
    ```
 
-  **Note**: Above, the UNIX password I have entered for the user `grader` is, `root`. 
+   **Note**: Above, the UNIX password I have entered for the user `grader` is, `root`. 
 
 2. Run the following command to add the user `grader` to the `sudo` group to grant it administrative access:
 
