@@ -224,7 +224,7 @@ To                         Action      From
 To allow SSH access to the user `grader`, first log in to the account of the user `grader`:
 
 ```
-su - grader
+# su - grader
 ```
 
 You should now see a prompt like this:
