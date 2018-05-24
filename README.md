@@ -360,7 +360,7 @@ $ git config --global user.email "contact@subhadeepdey.com"
 To install all the required packages, run the following command:
 
 ```
-pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests
+pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2
 ```
 
 ### 14. Setting Up Apache to Run the Flask Application
@@ -495,8 +495,8 @@ $ sudo service apache2 restart
    Apache uses the `.wsgi` file to serve the Flask app. Move to the `/var/www/FlaskApp/` directory and create a file named `flaskapp.wsgi` with following commands:
 
    ```
-   cd /var/www/FlaskApp/
-   sudo nano flaskapp.wsgi
+   $ cd /var/www/FlaskApp/
+   $ sudo nano flaskapp.wsgi
    ```
 
    Add the following lines to the `flaskapp.wsgi` file:
@@ -510,9 +510,56 @@ $ sudo service apache2 restart
 
    from FlaskApp import app as application
    application.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+   ```
 
+### 15. Install and Configure PostgreSQL
+
+#### 15.1. Installing PostgreSQL
+
+1. Create the file `/etc/apt/sources.list.d/pgdg.list` and add a line for the repository:
 
    ```
+   $ deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+   ```
+
+2. Import the repository signing key, and update the package lists
+
+   ```
+   $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+   $ sudo apt update
+   ```
+
+3. Install PostgreSQL:
+
+   ```
+   $ sudo apt install postgresql-10
+   ```
+
+#### 15.2. Configure PostgreSQL
+
+1. Log in as the user `postgres` that was automatically created during the installation of PostgreSQL Server:
+
+   ```
+   sudo su - postgres
+   ```
+
+2. Open the `psql` shell:
+
+   ```
+   $ psql
+   ```
+
+3. This will open the `psql` shell. Now type the following commands one-by-one:
+
+   ```sql
+   CREATE DATABASE catalog;
+   CREATE USER catalog;
+   ALTER ROLE catalog WITH PASSWORD 'password';
+   GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
+   ```
+
+   Then exit from the terminal by running `\q` followed by `exit`.
+   
 
 ## References
 
