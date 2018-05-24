@@ -289,3 +289,8 @@ Now run `exit` to go back to the host machine and proceed to the following step 
    ```
    root@206.189.151.124: Permission denied (publickey).
    ```
+
+## References
+
+[1] https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
+[2] http://terokarvinen.com/2016/deploy-flask-python3-on-apache2-ubuntu
