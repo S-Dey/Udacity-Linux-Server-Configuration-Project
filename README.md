@@ -26,5 +26,5 @@ To create public and private key pair, follow the following steps:
 1. Open terminal, and run the following command:
    
    ```console
-   username@host:~/ssh-keygen
+   username@host:~$ ssh-keygen
    ```
