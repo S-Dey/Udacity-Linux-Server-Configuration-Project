@@ -333,9 +333,27 @@ If the installation has succeeded, you should see the following Web page:
    pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
    ```
 
-### 12. Setting Up Apache to Run Flask Applications
+### 12. Installing and Configuring Git
 
-#### 12.1. Installing `mod_wsgi`
+#### 12.1. Installing Git
+
+To install `git`, run the following command:
+
+```
+$ sudo add-apt-repository ppa:git-core/ppa
+$ sudo apt update
+$ sudo apt install git
+```
+
+#### 12.2. Configuring Git
+
+To continue using git, you will have to configure a username and an email:
+$ git config --global user.name "Subhadeep Dey"
+$ git config --global user.email "contact@subhadeepdey.com"
+
+### 13. Setting Up Apache to Run Flask Applications
+
+#### 13.1. Installing `mod_wsgi`
 
 The module `mod_wsgi` will allow your Python applications to run from Apache server. To install it, run the following command:
    
