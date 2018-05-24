@@ -145,7 +145,7 @@ Local time is now:      Thu May 24 11:04:59 UTC 2018.
 Universal Time is now:  Thu May 24 11:04:59 UTC 2018.
 ```
 
-### 6. Setting Up a Basic Firewall
+### 6. Setting Up the Firewall
 
 Now we would configure the firewall to allow only incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123):
 
