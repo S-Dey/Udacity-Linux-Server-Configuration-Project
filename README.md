@@ -95,7 +95,7 @@ You now have a public and private key that you can use to authenticate. The publ
 
  Now run the following command to update the virtual server:
 
-```
+```bash
  # apt update && apt upgrade
 ```
 
@@ -103,37 +103,81 @@ You now have a public and private key that you can use to authenticate. The publ
 
 1. Open the `/etc/ssh/sshd_config` file with `nano` (or any other text editor of your choice):
 
-   ```
+   ```bash
    # nano /etc/ssh/sshd_config
    ```
 
 2. Find the line `#Port 22` (would be located around line 13) and change it to `Port 2200`, and save the file.
 
 3. Restart the SSH server to reflect those changes:
-   ```
+   ```bash
    # service ssh restart
    ```
 
 4. To confirm whether the changes have taken place or not, run:
-   ```
+   ```bash
    # exit
    ```
 
    This will take you back to your host machine. After you are back to the host machine, run:
 
-   ```
+   ```bash
    $ ssh root@206.189.151.124 -p 2200
    ```
 
-   The `-p` option explicitly tells what port the SSH server operates on. You should now be able to log in to the server.
+   The `-p` option explicitly tells what port the SSH server operates on. You should now be able to log in to the server as `root` user.
 
-### 5. Setting Up a Basic Firewall
+### 5. Configure Timezone to Use UTC
+
+To configure the timezone to use UTC, run the following command:
+
+```bash
+# sudo dpkg-reconfigure tzdata
+```
+
+It then shows you a list. Choose ``None of the Above`` and press enter. In the next step, choose ``UTC`` and press enter.
+
+### 6. Setting Up a Basic Firewall
+
+Now we would configure the firewall to allow only incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123):
+
+```bash
+# ufw allow 2200/tcp
+# ufw allow 80/tcp
+# ufw allow 123/udp
+```
+
+To enable the above created rules, run:
+
+```
+# ufw enable
+```
+
+To confirm whether the above rules have been successfully applied or not, run:
+
+```
+# ufw status
+```
+
+You should see something like this:
+
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+2200/tcp                   ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+123/udp                    ALLOW       Anywhere
+2200/tcp (v6)              ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+123/udp (v6)               ALLOW       Anywhere (v6)
+```
 
 
 
 
-
-### 6. Create the User `grader` and Add it to the `sudo` Group
+### 7. Create the User `grader` and Add it to the `sudo` Group
 
 1. While being logged into the virtual server, run the following command and proceed:
 
