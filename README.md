@@ -17,14 +17,39 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ## Steps to Set up the Server
 
-### 1. Creating Public and Private Key Pair
+### 1. Create the RSA Key Pair
 
-On your local machine, you'll have to first set up the public and private key pair. While the private key will be kept with you in your local machine, the public key will be stored in the server.
+On your local machine, you will first have to set up the public and private key pair. This key pair will be later used while securely logging in with SSH. While the private key will be kept with you in your local machine, the public key will be stored in the server.
 
-To create public and private key pair, follow the following steps:
+To generate a key pair, run the following command:
 
-1. Open terminal, and run the following command:
-   
    ```console
-   username@host:~$ ssh-keygen
+   $ ssh-keygen
    ```
+
+The whole process would look like this:
+
+```console
+subhadeep@subhadeep-VirtualBox:~$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/subhadeep/.ssh/id_rsa): /home/subhadeep/.ssh/udacity_project
+Created directory '/home/subhadeep/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/subhadeep/.ssh/udacity_project.
+Your public key has been saved in /home/subhadeep/.ssh/udacity_project.pub.
+The key fingerprint is:
+SHA256:JnpV8vpIZqstoTm8aaDAqVmGSF/tGhtDfXAfL2fs/U8 subhadeep@subhadeep-VirtualBox
+The key's randomart image is:
++---[RSA 2048]----+
+|                 |
+|       . . .     |
+|      o + o +    |
+| .   o o = o =   |
+|+.o o o S . = .  |
+|+o+. =.= .   . . |
+|o= o.oB.=       E|
+|+   *=.= +     ..|
+|   .oo.o+ .     o|
++----[SHA256]-----+
+```
