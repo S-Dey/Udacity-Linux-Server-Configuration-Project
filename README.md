@@ -335,13 +335,22 @@ If the installation has succeeded, you should see the following Web page:
 
 ### 12. Setting Up Apache to Run Flask Applications
 
-#### I. Setting Up `libapache2-mod-wsgi-py3`
+#### 12.1. Installing `mod_wsgi`
 
-1. Run the following command to install `libapache2-mod-wsgi-py3`:
+The module `mod_wsgi` will allow your Python applications to run from Apache server. To install it, run the following command:
    
-   ```
-   $ sudo apt install libapache2-mod-wsgi-py3
-   ```
+```
+$ sudo apt install libapache2-mod-wsgi-py3
+```
+
+After the installation has succeeded, restart the Apache server:
+
+```
+$ sudo service apache2 restart
+```
+
+#### 12.2. Configuring Virtual Hosts
+
 
 ## References
 
