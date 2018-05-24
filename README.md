@@ -285,7 +285,7 @@ Now run `exit` to go back to the host machine and proceed to the following step 
    subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
    ```
 
-   You should experience an error like this
+   You should experience an error like this:
    ```
    root@206.189.151.124: Permission denied (publickey).
    ```
