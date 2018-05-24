@@ -348,8 +348,12 @@ $ sudo apt install git
 #### 12.2. Configuring Git
 
 To continue using git, you will have to configure a username and an email:
+
+```
 $ git config --global user.name "Subhadeep Dey"
+
 $ git config --global user.email "contact@subhadeepdey.com"
+```
 
 ### 13. Setting Up Apache to Run Flask Applications
 
