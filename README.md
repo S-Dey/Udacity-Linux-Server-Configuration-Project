@@ -333,6 +333,16 @@ If the installation has succeeded, you should see the following Web page:
    pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
    ```
 
+### 12. Setting Up Apache to Run Flask Applications
+
+#### I. Setting Up `libapache2-mod-wsgi-py3`
+
+1. Run the following command to install `libapache2-mod-wsgi-py3`:
+   
+   ```
+   $ sudo apt install libapache2-mod-wsgi-py3
+   ```
+
 ## References
 
 [1] https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
