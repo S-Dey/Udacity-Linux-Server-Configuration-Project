@@ -182,7 +182,7 @@ To                         Action      From
 123/udp (v6)               ALLOW       Anywhere (v6)
 ```
 
-### 7. Create the User `grader` and Add it to the `sudo` Group
+### 7. Creating the User `grader` and Adding it to the `sudo` Group
 
 1. While being logged into the virtual server, run the following command and proceed:
 
