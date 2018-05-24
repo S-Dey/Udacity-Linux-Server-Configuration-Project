@@ -451,7 +451,7 @@ $ sudo service apache2 restart
 1. Run the following command in terminal to set up a file called `FlaskApp.conf` to configure the virtual hosts:
 
    ```
-   sudo nano /etc/apache2/sites-available/FlaskApp.conf
+   $ sudo nano /etc/apache2/sites-available/FlaskApp.conf
    ```
 
 2. Add the following lines to it:
@@ -481,9 +481,36 @@ $ sudo service apache2 restart
 3. Enable the virtual host:
 
    ```
-   sudo a2ensite FlaskApp
+   $ sudo a2ensite FlaskApp
    ```
 
+4. Restart Apache server:
+
+   ```
+   $ sudo service apache2 restart
+   ```
+
+5. Creating the .wsgi File
+
+   Apache uses the `.wsgi` file to serve the Flask app. Move to the `/var/www/FlaskApp/` directory and create a file named `flaskapp.wsgi` with following commands:
+
+   ```
+   cd /var/www/FlaskApp
+   sudo nano flaskapp.wsgi
+   ```
+
+   Add the following lines to the `flaskapp.wsgi` file:
+
+   ```python
+   #!/usr/bin/env python3
+   import sys
+   import logging
+   logging.basicConfig(stream=sys.stderr)
+   sys.path.insert(0,"/var/www/FlaskApp/")
+
+   from FlaskApp import app as application
+   application.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+   ```
 
 ## References
 
