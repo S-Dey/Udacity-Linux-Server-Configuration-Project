@@ -476,9 +476,7 @@ $ sudo service apache2 restart
       CustomLog ${APACHE_LOG_DIR}/access.log combined
    </VirtualHost>
 
-  ```
-
-
+   ```
 
 ## References
 
