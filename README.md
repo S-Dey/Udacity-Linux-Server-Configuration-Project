@@ -35,8 +35,8 @@ The whole process would look like this:
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/subhadeep/.ssh/id_rsa): /home/subhadeep/.ssh/udacity_project
 Created directory '/home/subhadeep/.ssh'.
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
 Your identification has been saved in /home/subhadeep/.ssh/udacity_project.
 Your public key has been saved in /home/subhadeep/.ssh/udacity_project.pub.
 The key fingerprint is:
@@ -55,7 +55,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory. 
+You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory.
 
 ### 2. Setting Up a DigitalOcean Droplet
 
@@ -68,31 +68,31 @@ You now have a public and private key that you can use to authenticate. The publ
 4. Choose a preferred size. In this project, I have chosen the *1GB/1 vCPU/25GB* configuration.
 
 5. In the section *Add Your SSH Keys*, paste the content of your public key, `udacity_project.pub`:
-   
+
    ![Add SSH Keys image](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
-  
+
    This step will automatically create the file `~/.ssh/authorized_keys` with appropriate permissions and add your public key to it. It would also add the following rule in the `/etc/ssh/sshd_config` file:
-   
+
    ```
    PasswordAuthentication no
    ```
-   
+
    This rule essentially disables password authentication on the `root` user, and rather allows SSH logins only.
-   
+
  6. Click *Create* to create the droplet. This will take some time to complete. After the droplet has been created successfully, a public IP address will be assigned. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
-   
+
  ### 3. Logging In as `root` via SSH
- 
+
  As the droplet has been created, you can now log in to the server as `root` user by running the following command in your host machine:
- 
+
  ```
     $ ssh root@206.189.151.124
  ```
- 
+
  This will look for the private key in your local machine and log you in automatically if the private key is found. After you are logged in, you might see something similar to this:
- 
+
  ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
- 
+
  Now run the following command to update the virtual server:
 
 ```
@@ -102,7 +102,7 @@ You now have a public and private key that you can use to authenticate. The publ
 ### 4. Changing the SSH Port from 22 to 2200
 
 1. Open the `/etc/ssh/sshd_config` file with `nano` (or any other text editor of your choice):
-   
+
    ```
    # nano /etc/ssh/sshd_config
    ```
@@ -118,17 +118,17 @@ You now have a public and private key that you can use to authenticate. The publ
    ```
    # exit
    ```
-   
-   This will take you back to your host machine, and then run:
-   
+
+   This will take you back to your host machine. After you are back to the host machine, run:
+
    ```
    $ ssh root@206.189.151.124 -p 2200
    ```
-   
-   The `-p` option explicitly tells what port the SSH server operates on. 
 
+   The `-p` option explicitly tells what port the SSH server operates on. You should now be able to log in to the server.
 
 ### 5. Setting Up a Basic Firewall
+
 
 
 
@@ -136,34 +136,34 @@ You now have a public and private key that you can use to authenticate. The publ
 ### 6. Create the User `grader` and Add it to the `sudo` Group
 
 1. While being logged into the virtual server, run the following command and proceed:
-   
+
    ```
    # adduser grader
    ```
-   
+
    The output would look like this:
-   
+
    ```
    Adding user `grader' ...
    Adding new group `grader' (1000) ...
    Adding new user `grader' (1000) with group `grader' ...
    Creating home directory `/home/grader' ...
    Copying files from `/etc/skel' ...
-   Enter new UNIX password: 
-   Retype new UNIX password: 
+   Enter new UNIX password:
+   Retype new UNIX password:
    passwd: password updated successfully
    Changing the user information for grader
    Enter the new value, or press ENTER for the default
 	   Full Name []: Grader
-	   Room Number []: 
-	   Work Phone []: 
-	   Home Phone []: 
-	   Other []: 
-   Is the information correct? [Y/n] 
+	   Room Number []:
+	   Work Phone []:
+	   Home Phone []:
+	   Other []:
+   Is the information correct? [Y/n]
    ```
 
 2. Run the following command to add the user `grader` to the `sudo` group to grant it administrative access:
-   
+
    ```
    # usermod -aG sudo grader
    ```
