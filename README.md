@@ -251,13 +251,13 @@ Paste the public key to the virtual server's `authorized_keys` file using `nano`
 $ nano authorized_keys
 ```
 
-After that, run `exit`. You should now be back to your local machine. To confirm it worked, run the following command in your local machine:
+After that, run `exit`. You would now be back to your local machine. To confirm that it worked, run the following command in your local machine:
 
 ```console
 subhadeep@subhadeep-VirtualBox:~$ ssh grader@206.189.151.124 -p 2200
 ```
 
-You should now be able to login as `grader` and would get a prompt to enter commands.
+You should now be able to log in as `grader` and would get a prompt to enter commands.
 
 Next, run `exit` to go back to the host machine and proceed to the following step to disable `root` login.
 
