@@ -211,8 +211,44 @@ To                         Action      From
    Is the information correct? [Y/n]
    ```
 
+  **Note**: Above, the UNIX password I have entered for the user `grader` is, `root`. 
+
 2. Run the following command to add the user `grader` to the `sudo` group to grant it administrative access:
 
    ```
    # usermod -aG sudo grader
    ```
+
+### 8. Adding SSH Access to the user `grader` and Disabling Root Login
+
+To allow SSH access to the user `grader`, first log in to the account of the user `grader`:
+
+```
+su - grader
+```
+
+You should now see a prompt like this:
+
+```console
+grader@ubuntu-s-1vcpu-1gb-sgp1-01:~$ |
+```
+
+Now enter the following commands to allow SSH access to the user `grader`:
+
+```
+$ mkdir .ssh
+$ chmod 700 .ssh
+$ cd .ssh/
+$ touch authorized_keys
+$ chmod 644 authorized_keys
+```
+
+Now go back to your local machine and copy the content of the public key file `~/.ssh/udacity_project.pub`.
+
+Paste the public key to the virtual server's `authorized_keys` file using any text editor, and save.
+
+After that, run `exit`. You should now be back to your local machine. To confirm it worked, run the following command in your local machine:
+
+```console
+subhadeep@subhadeep-VirtualBox:~$ ssh grader@206.189.151.124 -p 2200
+```
