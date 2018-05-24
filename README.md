@@ -2,8 +2,4 @@
 
 An Udacity Full Stack Web Developer II Nanodegree Project.
 
-## About
-
-```console
-local@host:~$whoami
-```
+## References
