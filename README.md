@@ -290,21 +290,49 @@ Now run `exit` to go back to the host machine and proceed to the following step 
    root@206.189.151.124: Permission denied (publickey).
    ```
 
-### 10. Setting Up Apache Server
+### 10. Installing Apache Web Server
 
-To install the Apache server, run the following command after logging in as `grader` user:
+To install the Apache Web Server, run the following command after logging in as `grader` user:
 
 ```
-$ sudo apt install apache2 
+$ sudo apt update
+$ sudo apt install apache2
 ```
 
-To confirm whether it successfully installed or not, open the following URL in your Web browser:
+To confirm whether it successfully installed or not, enter the following URL in your Web browser:
 
 http://206.189.151.124
 
-You should see the following Web page:
+If the installation has succeeded, you should see the following Web page:
 
 ![Screenshot](https://res.cloudinary.com/sdey96/image/upload/v1527170572/Capture_seeiof.png)
+
+### 11. Installing Python 3.6 and pip3
+
+1. To install Python 3.6, run the following command:
+
+   ```
+   $ sudo apt install python3
+   ```
+
+2. To install `pip3`, run the following command:
+
+   ```
+   $ sudo apt install python3-pip
+   ```
+
+   To confirm whether or not it has been successfully installed, run the following command:
+   
+   ```
+   $ pip3 --version
+   ```
+
+   You should see something like this:
+   
+   ```
+   pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
+   ```
+
 
 ## References
 
