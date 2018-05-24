@@ -71,7 +71,7 @@ You now have a public and private key that you can use to authenticate. The publ
    
    ![Add SSH Keys image](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
   
-   This step will automatically add the following rule in the `/etc/ssh/sshd_config` file:
+   This step will automatically create the file `~/.ssh/authorized_keys` and add your public key to it. It would also add the following rule in the `/etc/ssh/sshd_config` file:
    
    ```
    PasswordAuthentication no
@@ -89,7 +89,7 @@ You now have a public and private key that you can use to authenticate. The publ
     $ ssh root@206.189.151.124
  ```
  
- This will look for the private key in your local machine and log you in automatically. After you are logged in, it might look like this:
+ This will look for the private key in your local machine and log you in automatically if the private key is found. After you are logged in, it might look like this:
  
  ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
  
