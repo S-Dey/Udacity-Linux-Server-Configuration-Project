@@ -495,21 +495,23 @@ $ sudo service apache2 restart
    Apache uses the `.wsgi` file to serve the Flask app. Move to the `/var/www/FlaskApp/` directory and create a file named `flaskapp.wsgi` with following commands:
 
    ```
-   cd /var/www/FlaskApp
+   cd /var/www/FlaskApp/
    sudo nano flaskapp.wsgi
    ```
 
    Add the following lines to the `flaskapp.wsgi` file:
 
    ```python
-   #!/usr/bin/env python3
+   #!/usr/bin/python3
    import sys
    import logging
    logging.basicConfig(stream=sys.stderr)
-   sys.path.insert(0, "/var/www/FlaskApp/")
+   sys.path.insert(0,"/var/www/FlaskApp/")
 
    from FlaskApp import app as application
    application.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
    ```
 
 ## References
