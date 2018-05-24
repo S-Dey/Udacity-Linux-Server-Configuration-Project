@@ -27,10 +27,11 @@ To generate a key pair, run the following command:
    $ ssh-keygen
    ```
 
+When it asks to enter a passphrase, you may either leave it empty or enter some passphrase. A passphrase adds an additional layer of security to prevent unauthorized users from logging in.
+
 The whole process would look like this:
 
-```console
-subhadeep@subhadeep-VirtualBox:~$ ssh-keygen
+```
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/subhadeep/.ssh/id_rsa): /home/subhadeep/.ssh/udacity_project
 Created directory '/home/subhadeep/.ssh'.
@@ -53,3 +54,9 @@ The key's randomart image is:
 |   .oo.o+ .     o|
 +----[SHA256]-----+
 ```
+
+You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the private key is called `udacity_project`. 
+
+### 2. Set up Account on DigitalOcean and Add SSH Keys
+
+The next step is to set up an account on [DigtalOcean](https://cloud.digitalocean.com/login) or log in if you already have an account.
