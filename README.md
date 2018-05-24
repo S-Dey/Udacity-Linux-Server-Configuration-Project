@@ -355,9 +355,17 @@ $ git config --global user.name "Subhadeep Dey"
 $ git config --global user.email "contact@subhadeepdey.com"
 ```
 
-### 13. Setting Up Apache to Run the Flask Application
+### 13. Install Required `pip` Packages
 
-#### 13.1. Installing `mod_wsgi`
+To install all the required packages, run the following command:
+
+```
+pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests
+```
+
+### 14. Setting Up Apache to Run the Flask Application
+
+#### 14.1. Installing `mod_wsgi`
 
 The module `mod_wsgi` will allow your Python applications to run from Apache server. To install it, run the following command:
    
@@ -377,7 +385,7 @@ After the installation has succeeded, restart the Apache server:
 $ sudo service apache2 restart
 ```
 
-#### 13.2. Configuring Virtual Hosts
+#### 14.2. Cloning the Item Catalog Flask application
 
 1. Change the current working directory to `/var/www/`:
 
@@ -398,7 +406,7 @@ $ sudo service apache2 restart
    $ sudo git clone https://github.com/SDey96/Udacity-Item-Catalog-Project.git FlaskApp
    ```
 
-4. Move to the newly created directory:
+4. Move inside the newly created directory:
 
    ```
    $ cd FlaskApp/
