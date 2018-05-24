@@ -63,11 +63,11 @@ You now have a public and private key that you can use to authenticate. The publ
 
 2. Go to the Dashboard, and click "Create Droplet".  
 
-3. Choose "Ubuntu 18.04 x64" image from the list of given images.
+3. Choose *Ubuntu 18.04 x64* image from the list of given images.
 
 4. Choose a preferred size. In this project, I have chosen 1GB/1 vCPU/25GB configuration.
 
-5. In "Add Your SSH Keys" section, paste the content of your public key, `udacity_project.pub`:
+5. In the section *Add Your SSH Keys*, paste the content of your public key, `udacity_project.pub`:
    
    ![Add SSH Keys image](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
   
@@ -77,4 +77,4 @@ You now have a public and private key that you can use to authenticate. The publ
    PasswordAuthentication no
    ```
    
-   This rule will essentially disable password authentication on root user, and rather would use SSH only to login. 
+   This rule essentially disables password authentication on the `root` user and rather would allow only SSH logins. 
