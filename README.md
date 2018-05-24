@@ -95,7 +95,7 @@ You now have a public and private key that you can use to authenticate. The publ
 
  Now run the following command to update the virtual server:
 
-```bash
+```
  # apt update && apt upgrade
 ```
 
@@ -103,25 +103,25 @@ You now have a public and private key that you can use to authenticate. The publ
 
 1. Open the `/etc/ssh/sshd_config` file with `nano` (or any other text editor of your choice):
 
-   ```bash
+   ```
    # nano /etc/ssh/sshd_config
    ```
 
 2. Find the line `#Port 22` (would be located around line 13) and change it to `Port 2200`, and save the file.
 
 3. Restart the SSH server to reflect those changes:
-   ```bash
+   ```
    # service ssh restart
    ```
 
 4. To confirm whether the changes have taken place or not, run:
-   ```bash
+   ```
    # exit
    ```
 
    This will take you back to your host machine. After you are back to the host machine, run:
 
-   ```bash
+   ```
    $ ssh root@206.189.151.124 -p 2200
    ```
 
@@ -131,7 +131,7 @@ You now have a public and private key that you can use to authenticate. The publ
 
 To configure the timezone to use UTC, run the following command:
 
-```bash
+```
 # sudo dpkg-reconfigure tzdata
 ```
 
@@ -141,7 +141,7 @@ It then shows you a list. Choose ``None of the Above`` and press enter. In the n
 
 Now we would configure the firewall to allow only incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123):
 
-```bash
+```
 # ufw allow 2200/tcp
 # ufw allow 80/tcp
 # ufw allow 123/udp
