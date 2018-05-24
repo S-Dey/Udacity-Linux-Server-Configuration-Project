@@ -55,7 +55,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the private key is called `udacity_project`. 
+You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory. 
 
 ### 2. Set up a Droplet on DigitalOcean and Add SSH Keys
 
