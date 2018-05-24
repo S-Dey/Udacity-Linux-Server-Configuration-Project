@@ -293,6 +293,7 @@ Now run `exit` to go back to the host machine and proceed to the following step 
 ### 10. Setting Up Apache Server
 
 To install the Apache server, run the following command after logging in as `grader` user:
+
 ```
 $ sudo apt install apache2 
 ```
