@@ -10,15 +10,21 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ### Technical Information About the Project
 
-- Server IP Address: 127.0.0.1
-- SSH server access port: 2200
-- SSH login username: grader
-- Application URL: http://127.0.0.1
+- **Server IP Address:** 127.0.0.1
+- **SSH server access port:** 2200
+- **SSH login username:** grader
+- **Application URL:** http://127.0.0.1
 
-## Steps
+## Steps to Set up the Server
 
-1. Open
+### 1. Creating Public and Private Key Pair
 
-## References
+On your local machine, you'll have to first set up the public and private key pair. While the private key will be kept with you in your local machine, the public key will be stored in the server.
 
-http://google.com
+To create public and private key pair, follow the following steps:
+
+1. Open terminal, and run the following command:
+   
+   ```console
+   username@host:~/ssh-keygen
+   ```
