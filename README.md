@@ -245,7 +245,11 @@ $ chmod 644 authorized_keys
 
 Now go back to your local machine and copy the content of the public key file `~/.ssh/udacity_project.pub`.
 
-Paste the public key to the virtual server's `authorized_keys` file using any text editor, and save.
+Paste the public key to the virtual server's `authorized_keys` file using `nano` or any other text editor, and save:
+
+```
+$ nano authorized_keys
+```
 
 After that, run `exit`. You should now be back to your local machine. To confirm it worked, run the following command in your local machine:
 
@@ -253,7 +257,9 @@ After that, run `exit`. You should now be back to your local machine. To confirm
 subhadeep@subhadeep-VirtualBox:~$ ssh grader@206.189.151.124 -p 2200
 ```
 
-Now run `exit` to go back to the host machine and proceed to the following step to disable `root` login.
+You should now be able to login as `grader` and would get a prompt to enter commands.
+
+Next, run `exit` to go back to the host machine and proceed to the following step to disable `root` login.
 
 ### 9. Disabling Root Login
 
@@ -279,29 +285,23 @@ Now run `exit` to go back to the host machine and proceed to the following step 
    # exit
    ```
 
-6. After you are back to the host machine, when you try to login as `root`:
+6. After you are back to the host machine, when you try to log in as `root`, you should get an error:
 
    ```console
    subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
-   ```
-
-   You should experience an error like this:
-   ```
    root@206.189.151.124: Permission denied (publickey).
    ```
 
 ### 10. Installing Apache Web Server
 
-To install the Apache Web Server, run the following command after logging in as `grader` user:
+To install the Apache Web Server, run the following command after logging in as `grader` user via SSH:
 
 ```
 $ sudo apt update
 $ sudo apt install apache2
 ```
 
-To confirm whether it successfully installed or not, enter the following URL in your Web browser:
-
-http://206.189.151.124
+To confirm whether it successfully installed or not, enter the URL `http://206.189.151.124` in your Web browser:
 
 If the installation has succeeded, you should see the following Web page:
 
@@ -315,13 +315,13 @@ If the installation has succeeded, you should see the following Web page:
    $ sudo apt install python3
    ```
 
-2. To install `pip3`, run the following command:
+2. After the installation og Python 3.6 has succeeded, install `pip3`. To install it, run the following command:
 
    ```
    $ sudo apt install python3-pip
    ```
 
-   To confirm whether or not it has been successfully installed, run the following command:
+   To confirm whether or not it has been successfully installed, run:
    
    ```
    $ pip3 --version
@@ -332,7 +332,6 @@ If the installation has succeeded, you should see the following Web page:
    ```
    pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
    ```
-
 
 ## References
 
