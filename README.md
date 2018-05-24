@@ -219,7 +219,7 @@ To                         Action      From
    # usermod -aG sudo grader
    ```
 
-### 8. Adding SSH Access to the user `grader` and Disabling Root Login
+### 8. Adding SSH Access to the user `grader`
 
 To allow SSH access to the user `grader`, first log in to the account of the user `grader`:
 
@@ -252,3 +252,38 @@ After that, run `exit`. You should now be back to your local machine. To confirm
 ```console
 subhadeep@subhadeep-VirtualBox:~$ ssh grader@206.189.151.124 -p 2200
 ```
+
+Now run `exit` to go back to the host machine and proceed to the following step to disable `root` login.
+
+### 9. Disabling Root Login
+
+1. Run the following command to log in as `root` from your host machine:
+   ```
+   $ ssh root@206.189.151.124 -p 2200
+   ```
+
+2. After you are logged in, open the file `/etc/ssh/sshd_config` with `nano`:
+   ```
+   # nano /etc/ssh/sshd_config
+   ```
+
+3. Find the line `PermitRootLogin yes` and change it to `PermitRootLogin no`.
+
+4. Restart the SSH server:
+   ```
+   # service ssh restart
+   ```
+
+5. Terminate the connection:
+   ```
+   # exit
+   ```
+
+6. After you are back to the host machine, when you try to login to the root, you should experience an error like this:
+
+  ```console
+  subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
+
+  root@206.189.151.124: Permission denied (publickey).
+  ```
+
