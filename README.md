@@ -405,7 +405,7 @@ $ sudo service apache2 restart
    ```
 
 5. Checkout to the `development` branch:
-   
+
    ```
    $ sudo git checkout development
    ```
@@ -413,7 +413,7 @@ $ sudo service apache2 restart
    The directory tree should now look like this:
 
    ```
-   .
+   ..
     └── FlaskApp
         ├── LICENSE
         ├── README.md
