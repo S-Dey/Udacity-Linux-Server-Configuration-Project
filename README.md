@@ -535,12 +535,12 @@ $ sudo service apache2 restart
    $ sudo apt install postgresql-10
    ```
 
-#### 15.2. Configure PostgreSQL
+#### 15.2. Configuring PostgreSQL
 
 1. Log in as the user `postgres` that was automatically created during the installation of PostgreSQL Server:
 
    ```
-   sudo su - postgres
+   $ sudo su - postgres
    ```
 
 2. Open the `psql` shell:
@@ -552,10 +552,10 @@ $ sudo service apache2 restart
 3. This will open the `psql` shell. Now type the following commands one-by-one:
 
    ```sql
-   CREATE DATABASE catalog;
-   CREATE USER catalog;
-   ALTER ROLE catalog WITH PASSWORD 'password';
-   GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
+   postgres=# CREATE DATABASE catalog;
+   postgres=# CREATE USER catalog;
+   postgres=# ALTER ROLE catalog WITH PASSWORD 'password';
+   postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
    ```
 
    Then exit from the terminal by running `\q` followed by `exit`.
