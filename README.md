@@ -376,6 +376,8 @@ $ sudo service apache2 restart
 
 ## References
 
-[1] https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
+[1] <https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04>
 
-[2] http://terokarvinen.com/2016/deploy-flask-python3-on-apache2-ubuntu
+[2] <http://terokarvinen.com/2016/deploy-flask-python3-on-apache2-ubuntu>
+
+[3] <https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps>
