@@ -377,7 +377,7 @@ After the installation has succeeded, restart the Apache server:
 $ sudo service apache2 restart
 ```
 
-#### 12.2. Configuring Virtual Hosts
+#### 13.2. Configuring Virtual Hosts
 
 1. Change the current working directory to `/var/www/`:
 
