@@ -360,7 +360,7 @@ $ git config --global user.email "contact@subhadeepdey.com"
 To install all the required packages, run the following command:
 
 ```
-pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2
+pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
 ```
 
 ### 14. Setting Up Apache to Run the Flask Application
@@ -559,7 +559,7 @@ $ sudo service apache2 restart
    ```
 
    Then exit from the terminal by running `\q` followed by `exit`.
-   
+
 
 ## References
 
