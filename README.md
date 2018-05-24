@@ -279,11 +279,13 @@ Now run `exit` to go back to the host machine and proceed to the following step 
    # exit
    ```
 
-6. After you are back to the host machine, when you try to login to the root, you should experience an error like this:
+6. After you are back to the host machine, when you try to login as `root`:
 
-  ```console
-  subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
+   ```console
+   subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
+   ```
 
-  root@206.189.151.124: Permission denied (publickey).
-  ```
-
+   You should experience an error like this
+   ```
+   root@206.189.151.124: Permission denied (publickey).
+   ```
