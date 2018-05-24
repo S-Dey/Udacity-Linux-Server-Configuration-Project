@@ -290,6 +290,21 @@ Now run `exit` to go back to the host machine and proceed to the following step 
    root@206.189.151.124: Permission denied (publickey).
    ```
 
+### 10. Setting Up Apache Server
+
+To install the Apache server, run the following command after logging in as `grader` user:
+```
+$ sudo apt install apache2 
+```
+
+To confirm whether it successfully installed or not, open the following URL in your Web browser:
+
+http://206.189.151.124
+
+You should see the following Web page:
+
+![Screenshot](https://res.cloudinary.com/sdey96/image/upload/v1527170572/Capture_seeiof.png)
+
 ## References
 
 [1] https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04
