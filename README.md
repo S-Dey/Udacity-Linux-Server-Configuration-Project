@@ -61,7 +61,7 @@ You now have a public and private key that you can use to authenticate. The publ
 
 1. Log in or create an account on [DigtalOcean](https://cloud.digitalocean.com/login).
 
-2. Go to the Dashboard, and click "Create Droplet".  
+2. Go to the Dashboard, and click "Create Droplet".
 
 3. Choose *Ubuntu 18.04 x64* image from the list of given images.
 
@@ -137,6 +137,14 @@ To configure the timezone to use UTC, run the following command:
 
 It then shows you a list. Choose ``None of the Above`` and press enter. In the next step, choose ``UTC`` and press enter.
 
+You should now see an output like this:
+
+```
+Current default time zone: 'Etc/UTC'
+Local time is now:      Thu May 24 11:04:59 UTC 2018.
+Universal Time is now:  Thu May 24 11:04:59 UTC 2018.
+```
+
 ### 6. Setting Up a Basic Firewall
 
 Now we would configure the firewall to allow only incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123):
@@ -147,7 +155,7 @@ Now we would configure the firewall to allow only incoming connections for SSH (
 # ufw allow 123/udp
 ```
 
-To enable the above created rules, run:
+To enable the above firewall rules, run:
 
 ```
 # ufw enable
@@ -173,9 +181,6 @@ To                         Action      From
 80/tcp (v6)                ALLOW       Anywhere (v6)
 123/udp (v6)               ALLOW       Anywhere (v6)
 ```
-
-
-
 
 ### 7. Create the User `grader` and Add it to the `sudo` Group
 
