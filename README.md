@@ -6,7 +6,7 @@ An Udacity Full Stack Web Developer II Nanodegree Project.
 
 This tutorial will guide you through the steps to take a baseline installation of a Linux server and prepare it to host your Web applications. You will then secure your server from a number of attack vectors, install and configure a database server, and deploy one of your existing Flask-based Web applications onto it.
 
-In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. The technical details of the server as well as the steps that I have taken to set it up can be found in the succeeding sections.
+In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. The technical details of the server as well as the steps that have been taken to set it up can be found in the succeeding sections.
 
 ### Technical Information About the Project
 
@@ -19,7 +19,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ### 1. Creating the RSA Key Pair
 
-On your local machine, you will first have to set up the public and private key pair. This key pair will be later used while securely logging in with SSH. While the private key will be kept with you in your local machine, the public key will be stored in the server.
+On your local machine, you will first have to set up the public and private key pair. This key pair will be used to authenticate yourself while securely logging in to the server via SSH. The private key will be kept with you in your local machine, and the public key will be stored in the server.
 
 To generate a key pair, run the following command:
 
@@ -65,7 +65,7 @@ You now have a public and private key that you can use to authenticate. The publ
 
 3. Choose *Ubuntu 18.04 x64* image from the list of given images.
 
-4. Choose a preferred size. In this project, I have chosen 1GB/1 vCPU/25GB configuration.
+4. Choose a preferred size. In this project, I have chosen the *1GB/1 vCPU/25GB* configuration.
 
 5. In the section *Add Your SSH Keys*, paste the content of your public key, `udacity_project.pub`:
    
@@ -77,19 +77,19 @@ You now have a public and private key that you can use to authenticate. The publ
    PasswordAuthentication no
    ```
    
-   This rule essentially disables password authentication on the `root` user and rather would allow only SSH logins.
+   This rule essentially disables password authentication on the `root` user, and rather allows SSH logins only.
    
- 6. Click *Create* to create the droplet. This will take some time to complete. After the droplet has been created successfully, it will assign you a public IP address. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
+ 6. Click *Create* to create the droplet. This will take some time to complete. After the droplet has been created successfully, a public IP address will be assigned. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
    
  ### 3. Logging In as `root` via SSH
  
- As the droplet has now been created, you can log in via root by running the following command in your host machine:
+ As the droplet has been created, you can now log in to the server as `root` user by running the following command in your host machine:
  
  ```
     $ ssh root@206.189.151.124
  ```
  
- This will look for the private key in your local machine and log you in automatically if the private key is found. After you are logged in, it might look like this:
+ This will look for the private key in your local machine and log you in automatically if the private key is found. After you are logged in, you might see something similar to this:
  
  ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
  
@@ -121,9 +121,12 @@ You now have a public and private key that you can use to authenticate. The publ
    
    This will take you back to your host machine, and then run:
    
-   ```console
-   subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
    ```
+   $ ssh root@206.189.151.124 -p 2200
+   ```
+   
+   The `-p` option explicitly tells what port the SSH server operates on. 
+
 
 ### 5. Setting Up a Basic Firewall
 
