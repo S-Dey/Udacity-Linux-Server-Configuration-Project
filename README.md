@@ -10,10 +10,10 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ### Technical Information About the Project
 
-- **Server IP Address:** 127.0.0.1
+- **Server IP Address:** 206.189.151.124
 - **SSH server access port:** 2200
 - **SSH login username:** grader
-- **Application URL:** http://127.0.0.1
+- **Application URL:** http://206.189.151.124.xip.io
 
 ## Steps to Set up the Server
 
@@ -67,6 +67,14 @@ You now have a public and private key that you can use to authenticate. The publ
 
 4. Choose a preferred size. In this project, I have chosen 1GB/1 vCPU/25GB configuration.
 
-5. In "Add Your SSH Keys" Section, paste the content of your public key, `udacity_project.pub`:
-   ![](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
+5. In "Add Your SSH Keys" section, paste the content of your public key, `udacity_project.pub`:
+   
+   ![Add SSH Keys image](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
   
+   This step will automatically add the following rule in the `/etc/ssh/sshd_config` file:
+   
+   ```
+   PasswordAuthentication no
+   ```
+   
+   This rule will essentially disable password authentication on root user, and rather would use SSH only to login. 
