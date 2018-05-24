@@ -57,7 +57,7 @@ The key's randomart image is:
 
 You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory. 
 
-### 2. Set up a Droplet on DigitalOcean and Add SSH Keys
+### 2. Set up a Droplet on DigitalOcean
 
 1. Log in or create an account on [DigtalOcean](https://cloud.digitalocean.com/login).
 
@@ -77,4 +77,20 @@ You now have a public and private key that you can use to authenticate. The publ
    PasswordAuthentication no
    ```
    
-   This rule essentially disables password authentication on the `root` user and rather would allow only SSH logins. 
+   This rule essentially disables password authentication on the `root` user and rather would allow only SSH logins.
+   
+ 6. Click *Create* to create the droplet. This will take some time to complete. After the droplet has been created successfully, it will assign you a public IP address. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
+   
+ ### 3. Logging In as `root` Via SSH
+ 
+ As the droplet has now been created, you can log in via root by running the following command in your host machine:
+ 
+ ```console
+    $ ssh root@206.189.151.124
+ ```
+ 
+ This will look for the private key in your local machine and log you in automatically. After you are logged in, it might look like this:
+ 
+ ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
+ 
+ 
