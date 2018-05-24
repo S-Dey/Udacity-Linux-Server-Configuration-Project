@@ -17,7 +17,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ## Steps to Set up the Server
 
-### 1. Create the RSA Key Pair
+### 1. Creating the RSA Key Pair
 
 On your local machine, you will first have to set up the public and private key pair. This key pair will be later used while securely logging in with SSH. While the private key will be kept with you in your local machine, the public key will be stored in the server.
 
@@ -57,7 +57,7 @@ The key's randomart image is:
 
 You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory. 
 
-### 2. Set up a Droplet on DigitalOcean
+### 2. Setting Up a DigitalOcean Droplet
 
 1. Log in or create an account on [DigtalOcean](https://cloud.digitalocean.com/login).
 
@@ -71,7 +71,7 @@ You now have a public and private key that you can use to authenticate. The publ
    
    ![Add SSH Keys image](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
   
-   This step will automatically create the file `~/.ssh/authorized_keys` and add your public key to it. It would also add the following rule in the `/etc/ssh/sshd_config` file:
+   This step will automatically create the file `~/.ssh/authorized_keys` with appropriate permissions and add your public key to it. It would also add the following rule in the `/etc/ssh/sshd_config` file:
    
    ```
    PasswordAuthentication no
@@ -81,7 +81,7 @@ You now have a public and private key that you can use to authenticate. The publ
    
  6. Click *Create* to create the droplet. This will take some time to complete. After the droplet has been created successfully, it will assign you a public IP address. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
    
- ### 3. Logging In as `root` Via SSH
+ ### 3. Logging In as `root` via SSH
  
  As the droplet has now been created, you can log in via root by running the following command in your host machine:
  
@@ -93,8 +93,74 @@ You now have a public and private key that you can use to authenticate. The publ
  
  ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
  
- Now run the following command to update the system:
+ Now run the following command to update the virtual server:
 
 ```
- $ sudo apt update && sudo apt upgrade
+ # apt update && apt upgrade
 ```
+
+### 4. Changing the SSH Port from 22 to 2200
+
+1. Open the `/etc/ssh/sshd_config` file with `nano` (or any other text editor of your choice):
+   
+   ```
+   # nano /etc/ssh/sshd_config
+   ```
+
+2. Find the line `#Port 22` (would be located around line 13) and change it to `Port 2200`, and save the file.
+
+3. Restart the SSH server to reflect those changes:
+   ```
+   # service ssh restart
+   ```
+
+4. To confirm whether the changes have taken place or not, run:
+   ```
+   # exit
+   ```
+   
+   This will take you back to your host machine, and then run:
+   
+   ```console
+   subhadeep@subhadeep-VirtualBox:~$ ssh root@206.189.151.124 -p 2200
+   ```
+
+### 5. Setting Up a Basic Firewall
+
+
+
+
+### 6. Create the User `grader` and Add it to the `sudo` Group
+
+1. While being logged into the virtual server, run the following command and proceed:
+   
+   ```
+   # adduser grader
+   ```
+   
+   The output would look like this:
+   
+   ```
+   Adding user `grader' ...
+   Adding new group `grader' (1000) ...
+   Adding new user `grader' (1000) with group `grader' ...
+   Creating home directory `/home/grader' ...
+   Copying files from `/etc/skel' ...
+   Enter new UNIX password: 
+   Retype new UNIX password: 
+   passwd: password updated successfully
+   Changing the user information for grader
+   Enter the new value, or press ENTER for the default
+	   Full Name []: Grader
+	   Room Number []: 
+	   Work Phone []: 
+	   Home Phone []: 
+	   Other []: 
+   Is the information correct? [Y/n] 
+   ```
+
+2. Run the following command to add the user `grader` to the `sudo` group to grant it administrative access:
+   
+   ```
+   # usermod -aG sudo grader
+   ```
