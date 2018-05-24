@@ -66,3 +66,7 @@ You now have a public and private key that you can use to authenticate. The publ
 3. Choose "Ubuntu 18.04 x64" image from the list of given images.
 
 4. Choose a preferred size. In this project, I have chosen 1GB/1 vCPU/25GB configuration.
+
+5. In "Add Your SSH Keys" Section, paste the content of your public key, `udacity_project.pub`:
+   ![](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
+  
