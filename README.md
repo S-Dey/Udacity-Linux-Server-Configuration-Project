@@ -478,6 +478,13 @@ $ sudo service apache2 restart
 
    ```
 
+3. Enable the virtual host:
+
+   ```
+   sudo a2ensite FlaskApp
+   ```
+
+
 ## References
 
 [1] <https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04>
