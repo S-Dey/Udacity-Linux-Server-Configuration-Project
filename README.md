@@ -355,7 +355,7 @@ $ git config --global user.name "Subhadeep Dey"
 $ git config --global user.email "contact@subhadeepdey.com"
 ```
 
-### 13. Setting Up Apache to Run Flask Applications
+### 13. Setting Up Apache to Run the Flask Application
 
 #### 13.1. Installing `mod_wsgi`
 
@@ -363,6 +363,12 @@ The module `mod_wsgi` will allow your Python applications to run from Apache ser
    
 ```
 $ sudo apt install libapache2-mod-wsgi-py3
+```
+
+You might then want to run:
+
+```
+$ sudo a2enmod wsgi
 ```
 
 After the installation has succeeded, restart the Apache server:
@@ -373,6 +379,64 @@ $ sudo service apache2 restart
 
 #### 12.2. Configuring Virtual Hosts
 
+1. Change the current working directory to `/var/www/`:
+
+   ```
+   $ cd /var/www/
+   ```
+
+2. Create a directory called `FlaskApp` and change the working directory to it:
+
+   ```
+   $ sudo mkdir FlaskApp
+   $ cd FlaskApp/
+   ```
+
+3. Clone [this repository](https://github.com/SDey96/Udacity-Item-Catalog-Project/tree/development) as the directory `FlaskApp`:
+
+   ```
+   $ sudo git clone https://github.com/SDey96/Udacity-Item-Catalog-Project.git FlaskApp
+   ```
+
+4. Move to the newly created directory:
+
+   ```
+   $ cd FlaskApp/
+   ```
+
+5. Checkout to the `development` branch:
+   
+   ```
+   $ sudo git checkout development
+   ```
+
+   The directory tree should now look like this:
+
+   ```
+   .
+    └── FlaskApp
+        ├── LICENSE
+        ├── README.md
+        ├── __init__.py
+        ├── client_secrets.json
+        ├── database_setup.py
+        ├── fake_db_populator.py
+        ├── static
+        │   └── style.css
+        └── templates
+            ├── delete.html
+            ├── delete_category.html
+            ├── edit_category.html
+            ├── index.html
+            ├── items.html
+            ├── layout.html
+            ├── login.html
+            ├── new-category.html
+            ├── new-item-2.html
+            ├── new-item.html
+            ├── update-item.html
+            └── view-item.html
+    ```
 
 ## References
 
