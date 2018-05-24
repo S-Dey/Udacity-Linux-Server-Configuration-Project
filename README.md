@@ -457,6 +457,7 @@ $ sudo service apache2 restart
 2. Add the following lines to it:
 
    ```
+
    <VirtualHost *:80>
       ServerName 206.189.151.124
       ServerAdmin contact@subhadeepdey.com
@@ -473,8 +474,9 @@ $ sudo service apache2 restart
       ErrorLog ${APACHE_LOG_DIR}/error.log
       LogLevel warn
       CustomLog ${APACHE_LOG_DIR}/access.log combined
-  </VirtualHost>
-```
+   </VirtualHost>
+
+  ```
 
 
 
