@@ -309,7 +309,7 @@ If the installation has succeeded, you should see the following Web page:
 
 ### 11. Installing Python 3.6 and pip3
 
-1. To install Python 3.6, run the following command:
+1. If Python 3.6 is not already installed, run the following command to install it:
 
    ```
    $ sudo apt install python3
@@ -512,17 +512,22 @@ $ sudo service apache2 restart
    application.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
    ```
 
-### 15. Install and Configure PostgreSQL
+### 15. Installing and Configuring PostgreSQL
 
 #### 15.1. Installing PostgreSQL
 
-1. Create the file `/etc/apt/sources.list.d/pgdg.list` and add a line for the repository:
+1. Create the file `/etc/apt/sources.list.d/pgdg.list`:
 
    ```
-   $ deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+   $ nano /etc/apt/sources.list.d/pgdg.list
    ```
 
-2. Import the repository signing key, and update the package lists
+   And, add the following line to it:
+   ```
+   deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+   ```
+
+2. Import the repository signing key, and update the package lists:
 
    ```
    $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
