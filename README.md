@@ -509,7 +509,6 @@ $ sudo service apache2 restart
    sys.path.insert(0,"/var/www/FlaskApp/")
 
    from FlaskApp import app as application
-   application.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
    ```
 
 ### 15. Installing and Configuring PostgreSQL
