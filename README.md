@@ -363,9 +363,62 @@ $ git config --global user.name "Subhadeep Dey"
 $ git config --global user.email "contact.sdey@gmail.com"
 ```
 
-### 13. Setting Up Apache to Run the Flask Application
+### 13. Installing and Configuring PostgreSQL
 
-#### 13.1. Installing `mod_wsgi`
+#### 13.1. Installing PostgreSQL
+
+1. Create the file `/etc/apt/sources.list.d/pgdg.list`:
+
+   ```
+   $ nano /etc/apt/sources.list.d/pgdg.list
+   ```
+
+   And, add the following line to it:
+   ```
+   deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+   ```
+
+2. Import the repository signing key, and update the package lists:
+
+   ```
+   $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+   $ sudo apt update
+   ```
+
+3. Install PostgreSQL:
+
+   ```
+   $ sudo apt install postgresql-10
+   ```
+
+#### 13.2. Configuring PostgreSQL
+
+1. Log in as the user `postgres` that was automatically created during the installation of PostgreSQL Server:
+
+   ```
+   $ sudo su - postgres
+   ```
+
+2. Open the `psql` shell:
+
+   ```
+   $ psql
+   ```
+
+3. This will open the `psql` shell. Now type the following commands one-by-one:
+
+   ```sql
+   postgres=# CREATE DATABASE catalog;
+   postgres=# CREATE USER catalog;
+   postgres=# ALTER ROLE catalog WITH PASSWORD 'password';
+   postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
+   ```
+
+   Then exit from the terminal by running `\q` followed by `exit`.
+
+### 14. Setting Up Apache to Run the Flask Application
+
+#### 14.1. Installing `mod_wsgi`
 
 The module `mod_wsgi` will allow your Python applications to run from Apache server. To install it, run the following command:
    
@@ -381,7 +434,7 @@ After the installation has succeeded, restart the Apache server:
 $ sudo service apache2 restart
 ```
 
-#### 13.2. Cloning the Item Catalog Flask application
+#### 14.2. Cloning the Item Catalog Flask application
 
 1. Change the current working directory to `/var/www/`:
 
@@ -443,7 +496,7 @@ $ sudo service apache2 restart
             └── view-item.html
    ```
 
-#### 13.3. Installing `virtualenv` and All the Required Packages
+#### 14.3. Installing `virtualenv` and All the Required Packages
 
 1. To install `virtualenv`, run the following command:
 
@@ -477,11 +530,11 @@ $ sudo service apache2 restart
 
 5. Install required packages:
 
-   ```console
-   (venv) grader@ubuntu-s-1vcpu-1gb-sgp1-01:/var/www/FlaskApp$ pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
+   ```
+   $ pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
    ```
 
-#### 13.4. Setting Up Virtual Hosts
+#### 14.4. Setting Up Virtual Hosts
 
 1. Run the following command in terminal to set up a file called `FlaskApp.conf` to configure the virtual hosts:
 
@@ -548,59 +601,13 @@ $ sudo service apache2 restart
    from FlaskApp import app as application
    ```
 
-### 14. Installing and Configuring PostgreSQL
-
-#### 14.1. Installing PostgreSQL
-
-1. Create the file `/etc/apt/sources.list.d/pgdg.list`:
+6. Restart Apache server:
 
    ```
-   $ nano /etc/apt/sources.list.d/pgdg.list
+   $ sudo service apache2 restart
    ```
-
-   And, add the following line to it:
-   ```
-   deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
-   ```
-
-2. Import the repository signing key, and update the package lists:
-
-   ```
-   $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-   $ sudo apt update
-   ```
-
-3. Install PostgreSQL:
-
-   ```
-   $ sudo apt install postgresql-10
-   ```
-
-#### 14.2. Configuring PostgreSQL
-
-1. Log in as the user `postgres` that was automatically created during the installation of PostgreSQL Server:
-
-   ```
-   $ sudo su - postgres
-   ```
-
-2. Open the `psql` shell:
-
-   ```
-   $ psql
-   ```
-
-3. This will open the `psql` shell. Now type the following commands one-by-one:
-
-   ```sql
-   postgres=# CREATE DATABASE catalog;
-   postgres=# CREATE USER catalog;
-   postgres=# ALTER ROLE catalog WITH PASSWORD 'password';
-   postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
-   ```
-
-   Then exit from the terminal by running `\q` followed by `exit`.
-
+   
+   Now you should be able to run the application at <http://206.189.151.124.xip.io/>.
 
 ## References
 
