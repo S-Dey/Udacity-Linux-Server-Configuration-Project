@@ -15,6 +15,45 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 - **SSH login username:** grader
 - **Application URL:** http://206.189.151.124.xip.io
 
+## Table of Contents
+
+<!-- TOC -->
+
+- [Udacity - Linux Server Configuration Project](#udacity---linux-server-configuration-project)
+    - [About](#about)
+        - [Technical Information About the Project](#technical-information-about-the-project)
+    - [Table of Contents](#table-of-contents)
+    - [Steps to Set up the Server](#steps-to-set-up-the-server)
+        - [1. Creating the RSA Key Pair](#1-creating-the-rsa-key-pair)
+        - [2. Setting Up a DigitalOcean Droplet](#2-setting-up-a-digitalocean-droplet)
+        - [3. Logging In as `root` via SSH and Updating the System](#3-logging-in-as-root-via-ssh-and-updating-the-system)
+            - [3.1. Logging in as `root` via SSH](#31-logging-in-as-root-via-ssh)
+            - [3.2. Updating the System](#32-updating-the-system)
+        - [4. Changing the SSH Port from 22 to 2200](#4-changing-the-ssh-port-from-22-to-2200)
+        - [5. Configure Timezone to Use UTC](#5-configure-timezone-to-use-utc)
+        - [6. Setting Up the Firewall](#6-setting-up-the-firewall)
+        - [7. Creating the User `grader` and Adding it to the `sudo` Group](#7-creating-the-user-grader-and-adding-it-to-the-sudo-group)
+            - [7.1. Creating the User `grader`](#71-creating-the-user-grader)
+            - [7.2. Adding `grader` to the Group `sudo`](#72-adding-grader-to-the-group-sudo)
+        - [8. Adding SSH Access to the user `grader`](#8-adding-ssh-access-to-the-user-grader)
+        - [9. Disabling Root Login](#9-disabling-root-login)
+        - [10. Installing Apache Web Server](#10-installing-apache-web-server)
+        - [11. Installing `pip3`](#11-installing-pip3)
+        - [12. Installing and Configuring Git](#12-installing-and-configuring-git)
+            - [12.1. Installing Git](#121-installing-git)
+            - [12.2. Configuring Git](#122-configuring-git)
+        - [13. Installing and Configuring PostgreSQL](#13-installing-and-configuring-postgresql)
+            - [13.1. Installing PostgreSQL](#131-installing-postgresql)
+            - [13.2. Configuring PostgreSQL](#132-configuring-postgresql)
+        - [14. Setting Up Apache to Run the Flask Application](#14-setting-up-apache-to-run-the-flask-application)
+            - [14.1. Installing `mod_wsgi`](#141-installing-mod_wsgi)
+            - [14.2. Cloning the Item Catalog Flask application](#142-cloning-the-item-catalog-flask-application)
+            - [14.3. Installing `virtualenv` and All the Required Packages](#143-installing-virtualenv-and-all-the-required-packages)
+            - [14.4. Setting Up Virtual Hosts](#144-setting-up-virtual-hosts)
+    - [References](#references)
+
+<!-- /TOC -->
+
 ## Steps to Set up the Server
 
 ### 1. Creating the RSA Key Pair
