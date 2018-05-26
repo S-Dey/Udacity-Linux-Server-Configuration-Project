@@ -345,7 +345,7 @@ You should see something like this if it has been successfully installed:
 
 #### 12.1. Installing Git
 
-In Ubuntu 18.04, `git` might already be pre-installed. If it isn't, run the following command:
+In Ubuntu 18.04, `git` might already be pre-installed. If it isn't, run the following commands:
 
 ```
 $ sudo add-apt-repository ppa:git-core/ppa
