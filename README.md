@@ -443,7 +443,7 @@ $ sudo service apache2 restart
             └── view-item.html
    ```
 
-#### 13.3. Installing `virtualenv` and Installing Required Packages
+#### 13.3. Installing `virtualenv` and All the Required Packages
 
 1. To install `virtualenv`, run the following command:
 
@@ -477,8 +477,8 @@ $ sudo service apache2 restart
 
 5. Install required packages:
 
-   ```
-   $ pip3 install 
+   ```console
+   (venv) grader@ubuntu-s-1vcpu-1gb-sgp1-01:/var/www/FlaskApp$ pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
    ```
 
 #### 13.4. Setting Up Virtual Hosts
@@ -513,7 +513,6 @@ $ sudo service apache2 restart
       CustomLog ${APACHE_LOG_DIR}/access.log combined
    </VirtualHost>
 
-
    ```
 
 3. Enable the virtual host:
@@ -540,18 +539,18 @@ $ sudo service apache2 restart
    Add the following lines to the `flaskapp.wsgi` file:
 
    ```python
-   #!/usr/bin/python3
+   #!/var/www/FlaskApp/venv/bin/python3
    import sys
    import logging
    logging.basicConfig(stream=sys.stderr)
-   sys.path.insert(0,"/var/www/FlaskApp/")
+   sys.path.insert(0, "/var/www/FlaskApp/")
 
    from FlaskApp import app as application
    ```
 
-### 15. Installing and Configuring PostgreSQL
+### 14. Installing and Configuring PostgreSQL
 
-#### 15.1. Installing PostgreSQL
+#### 14.1. Installing PostgreSQL
 
 1. Create the file `/etc/apt/sources.list.d/pgdg.list`:
 
@@ -577,7 +576,7 @@ $ sudo service apache2 restart
    $ sudo apt install postgresql-10
    ```
 
-#### 15.2. Configuring PostgreSQL
+#### 14.2. Configuring PostgreSQL
 
 1. Log in as the user `postgres` that was automatically created during the installation of PostgreSQL Server:
 
