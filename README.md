@@ -338,7 +338,7 @@ $ pip3 --version
 You should see something like this if it has been successfully installed:
    
 ```
-   pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
+pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
 ```
 
 ### 12. Installing and Configuring Git
