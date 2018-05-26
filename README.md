@@ -61,47 +61,57 @@ You now have a public and private key that you can use to authenticate. The publ
 
 1. Log in or create an account on [DigtalOcean](https://cloud.digitalocean.com/login).
 
-2. Go to the Dashboard, and click "Create Droplet".
+2. Go to the Dashboard, and click **Create Droplet**.
 
-3. Choose *Ubuntu 18.04 x64* image from the list of given images.
+3. Choose **Ubuntu 18.04 x64** image from the list of given images.
 
-4. Choose a preferred size. In this project, I have chosen the *1GB/1 vCPU/25GB* configuration.
+4. Choose a preferred size. In this project, I have chosen the **1GB/1 vCPU/25GB** configuration.
 
-5. In the section *Add Your SSH Keys*, paste the content of your public key, `udacity_project.pub`:
+5. In the section **Add Your SSH Keys**, paste the content of your public key, `udacity_project.pub`:
 
    ![Add SSH Keys image](https://res.cloudinary.com/sdey96/image/upload/v1527149812/ssh_jhd3zp.png)
 
-   This step will automatically create the file `~/.ssh/authorized_keys` with appropriate permissions and add your public key to it. It would also add the following rule in the `/etc/ssh/sshd_config` file:
+   This step will automatically create the file `~/.ssh/authorized_keys` with appropriate permissions and add your public key to it. It would also add the following rule in the `/etc/ssh/sshd_config` file automatically:
 
    ```
    PasswordAuthentication no
    ```
 
-   This rule essentially disables password authentication on the `root` user, and rather allows SSH logins only.
+   This rule essentially disables password authentication on the `root` user, and rather enforces SSH logins only.
 
- 6. Click *Create* to create the droplet. This will take some time to complete. After the droplet has been created successfully, a public IP address will be assigned. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
+ 6. Click **Create** to create the droplet. This will take some time to complete. After the droplet has been created successfully, a public IP address will be assigned. In this project, the public IPv4 address that I have been assigned is `206.189.151.124`.
 
- ### 3. Logging In as `root` via SSH
+### 3. Logging In as `root` via SSH and Updating the System
 
- As the droplet has been created, you can now log in to the server as `root` user by running the following command in your host machine:
+#### 3.1. Logging in as `root` via SSH
 
- ```
-    $ ssh root@206.189.151.124
- ```
+As the droplet has been successfully created, you can now log into the server as `root` user by running the following command in your host machine:
 
- This will look for the private key in your local machine and log you in automatically if the private key is found. After you are logged in, you might see something similar to this:
+```
+  $ ssh root@206.189.151.124
+```
 
- ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
+This will look for the private key in your local machine and log you in automatically if the matching private key is found. After you are logged in, you might see something similar to this:
 
- Now run the following command to update the virtual server:
+![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
+
+#### 3.2. Updating the System
+
+Run the following command to update the virtual server:
 
 ```
  # apt update && apt upgrade
 ```
 
+This will update all the packages. If the available update is a kernel update, you might need to reboot the server by running the following command:
+
+```
+# reboot
+```
+
 ### 4. Changing the SSH Port from 22 to 2200
 
-1. Open the `/etc/ssh/sshd_config` file with `nano` (or any other text editor of your choice):
+1. Open the `/etc/ssh/sshd_config` file with `nano` or any other text editor of your choice:
 
    ```
    # nano /etc/ssh/sshd_config
@@ -114,7 +124,7 @@ You now have a public and private key that you can use to authenticate. The publ
    # service ssh restart
    ```
 
-4. To confirm whether the changes have taken place or not, run:
+4. To confirm whether the changes have come into effect or not, run:
    ```
    # exit
    ```
@@ -184,53 +194,57 @@ To                         Action      From
 
 ### 7. Creating the User `grader` and Adding it to the `sudo` Group
 
-1. While being logged into the virtual server, run the following command and proceed:
+#### 7.1. Creating the User `grader`
 
-   ```
-   # adduser grader
-   ```
+While being logged into the virtual server, run the following command and proceed:
 
-   The output would look like this:
+```
+  # adduser grader
+```
 
-   ```
-   Adding user `grader' ...
-   Adding new group `grader' (1000) ...
-   Adding new user `grader' (1000) with group `grader' ...
-   Creating home directory `/home/grader' ...
-   Copying files from `/etc/skel' ...
-   Enter new UNIX password:
-   Retype new UNIX password:
-   passwd: password updated successfully
-   Changing the user information for grader
-   Enter the new value, or press ENTER for the default
-	   Full Name []: Grader
-	   Room Number []:
-	   Work Phone []:
-	   Home Phone []:
-	   Other []:
-   Is the information correct? [Y/n]
-   ```
+The output would look like this:
 
-   **Note**: Above, the UNIX password I have entered for the user `grader` is, `root`. 
+```
+  Adding user `grader' ...
+  Adding new group `grader' (1000) ...
+  Adding new user `grader' (1000) with group `grader' ...
+  Creating home directory `/home/grader' ...
+  Copying files from `/etc/skel' ...
+  Enter new UNIX password:
+  Retype new UNIX password:
+  passwd: password updated successfully
+  Changing the user information for grader
+  Enter the new value, or press ENTER for the default
+	  Full Name []: Grader
+	  Room Number []:
+	  Work Phone []:
+	  Home Phone []:
+	  Other []:
+  Is the information correct? [Y/n]
+```
 
-2. Run the following command to add the user `grader` to the `sudo` group to grant it administrative access:
+**Note**: Above, the UNIX password I have entered for the user `grader` is, `root`. 
 
-   ```
-   # usermod -aG sudo grader
-   ```
+#### 7.2. Adding `grader` to the Group `sudo`
+
+Run the following command to add the user `grader` to the `sudo` group to grant it administrative access:
+
+```
+  # usermod -aG sudo grader
+```
 
 ### 8. Adding SSH Access to the user `grader`
 
-To allow SSH access to the user `grader`, first log in to the account of the user `grader`:
+To allow SSH access to the user `grader`, first log into the account of the user `grader` from your virtual server:
 
 ```
 # su - grader
 ```
 
-You should now see a prompt like this:
+You should see a prompt like this:
 
 ```console
-grader@ubuntu-s-1vcpu-1gb-sgp1-01:~$ |
+grader@ubuntu-s-1vcpu-1gb-sgp1-01:~$
 ```
 
 Now enter the following commands to allow SSH access to the user `grader`:
@@ -243,7 +257,7 @@ $ touch authorized_keys
 $ chmod 644 authorized_keys
 ```
 
-Now go back to your local machine and copy the content of the public key file `~/.ssh/udacity_project.pub`.
+After you have run all the above commands, go back to your local machine and copy the content of the public key file `~/.ssh/udacity_project.pub`.
 
 Paste the public key to the virtual server's `authorized_keys` file using `nano` or any other text editor, and save:
 
@@ -263,7 +277,7 @@ Next, run `exit` to go back to the host machine and proceed to the following ste
 
 ### 9. Disabling Root Login
 
-1. Run the following command to log in as `root` from your host machine:
+1. Run the following command to log in as `root` from your local machine:
    ```
    $ ssh root@206.189.151.124 -p 2200
    ```
@@ -294,7 +308,7 @@ Next, run `exit` to go back to the host machine and proceed to the following ste
 
 ### 10. Installing Apache Web Server
 
-To install the Apache Web Server, run the following command after logging in as `grader` user via SSH:
+To install the Apache Web Server, run the following command after logging in as the `grader` user via SSH:
 
 ```
 $ sudo apt update
@@ -303,41 +317,35 @@ $ sudo apt install apache2
 
 To confirm whether it successfully installed or not, enter the URL `http://206.189.151.124` in your Web browser:
 
-If the installation has succeeded, you should see the following Web page:
+If the installation has succeeded, you should see the following Webpage:
 
 ![Screenshot](https://res.cloudinary.com/sdey96/image/upload/v1527170572/Capture_seeiof.png)
 
-### 11. Installing Python 3.6 and pip3
+### 11. Installing `pip3`
 
-1. If Python 3.6 is not already installed, run the following command to install it:
+The package `pip3` will be required to install certain packages. To install it, run:
 
-   ```
-   $ sudo apt install python3
-   ```
+```
+$ sudo apt install python3-pip
+```
 
-2. After the installation of Python 3.6 has succeeded, you'll have to install `pip3` to install certain packages later. To install it, run the following command:
-
-   ```
-   $ sudo apt install python3-pip
-   ```
-
-   To confirm whether or not it has been successfully installed, run:
+To confirm whether or not it has been successfully installed, run:
    
-   ```
-   $ pip3 --version
-   ```
+```
+$ pip3 --version
+```
 
-   You should see something like this if it has been successfully installed:
+You should see something like this if it has been successfully installed:
    
-   ```
+```
    pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)
-   ```
+```
 
 ### 12. Installing and Configuring Git
 
 #### 12.1. Installing Git
 
-To install `git`, run the following command:
+In Ubuntu 18.04, `git` might already be pre-installed. If it isn't, run the following command:
 
 ```
 $ sudo add-apt-repository ppa:git-core/ppa
@@ -347,25 +355,17 @@ $ sudo apt install git
 
 #### 12.2. Configuring Git
 
-To continue using git, you will have to configure a username and an email:
+To continue using `git`, you will have to configure a username and an email:
 
 ```
 $ git config --global user.name "Subhadeep Dey"
 
-$ git config --global user.email "contact@subhadeepdey.com"
+$ git config --global user.email "contact.sdey@gmail.com"
 ```
 
-### 13. Install Required `pip` Packages
+### 13. Setting Up Apache to Run the Flask Application
 
-To install all the required packages, run the following command:
-
-```
-pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
-```
-
-### 14. Setting Up Apache to Run the Flask Application
-
-#### 14.1. Installing `mod_wsgi`
+#### 13.1. Installing `mod_wsgi`
 
 The module `mod_wsgi` will allow your Python applications to run from Apache server. To install it, run the following command:
    
@@ -373,11 +373,7 @@ The module `mod_wsgi` will allow your Python applications to run from Apache ser
 $ sudo apt install libapache2-mod-wsgi-py3
 ```
 
-You might then want to run:
-
-```
-$ sudo a2enmod wsgi
-```
+This would also enable `wsgi`. So, you don't have to enable it manually.
 
 After the installation has succeeded, restart the Apache server:
 
@@ -385,7 +381,7 @@ After the installation has succeeded, restart the Apache server:
 $ sudo service apache2 restart
 ```
 
-#### 14.2. Cloning the Item Catalog Flask application
+#### 13.2. Cloning the Item Catalog Flask application
 
 1. Change the current working directory to `/var/www/`:
 
@@ -428,6 +424,7 @@ $ sudo service apache2 restart
         ├── __init__.py
         ├── client_secrets.json
         ├── database_setup.py
+        ├── drop_tables.py
         ├── fake_db_populator.py
         ├── static
         │   └── style.css
@@ -444,9 +441,41 @@ $ sudo service apache2 restart
             ├── new-item.html
             ├── update-item.html
             └── view-item.html
-    ```
+  ```
 
-#### 14.3. Setting Up Virtual Hosts
+#### 13.3. Installing `virtualenv` and Installing Required Packages
+
+1. To install `virtualenv`, run the following command:
+
+   ```
+   $ sudo pip3 install virtualenv
+   ```
+
+2. Then move to `/var/www/FlaskApp/`:
+
+  ```
+   $ cd /var/www/FlaskApp/
+   ```
+
+3. Create a Virtual Environment:
+
+   ```
+   $ python3 -m virtualenv venv
+   ```
+
+4. Activate `venv`:
+
+   ```
+   source venv/bin/activate
+   ```
+
+   You should now see a prompt like this:
+
+   ```console
+   (venv) grader@ubuntu-s-1vcpu-1gb-sgp1-01:/var/www/FlaskApp$
+   ```
+
+#### 13.4. Setting Up Virtual Hosts
 
 1. Run the following command in terminal to set up a file called `FlaskApp.conf` to configure the virtual hosts:
 
@@ -460,21 +489,24 @@ $ sudo service apache2 restart
 
    <VirtualHost *:80>
       ServerName 206.189.151.124
-      ServerAdmin contact@subhadeepdey.com
+      ServerAlias 206.189.151.124.xip.io
+      ServerAdmin contact.sdey@gmail.com
+      WSGIDaemonProcess FlaskApp python-path=/var/www \
+        python-home=/var/www/FlaskApp/venv
+      WSGIProcessGroup FlaskApp
       WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
       <Directory /var/www/FlaskApp/FlaskApp/>
-        Order allow,deny
-        Allow from all
+          Require all granted
       </Directory>
       Alias /static /var/www/FlaskApp/FlaskApp/static
       <Directory /var/www/FlaskApp/FlaskApp/static/>
-        Order allow,deny
-        Allow from all
+          Require all granted
       </Directory>
       ErrorLog ${APACHE_LOG_DIR}/error.log
       LogLevel warn
       CustomLog ${APACHE_LOG_DIR}/access.log combined
    </VirtualHost>
+
 
    ```
 
