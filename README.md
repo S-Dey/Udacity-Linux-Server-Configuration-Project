@@ -516,7 +516,12 @@ $ sudo service apache2 restart
    $ python3 -m virtualenv venv
    ```
 
-4. Activate `venv`:
+4. Change the mode of `venv` to 777:
+
+   ```
+   $ sudo chmod 777 venv/
+   ```
+5. Activate `venv`:
 
    ```
    $ source venv/bin/activate
@@ -528,7 +533,7 @@ $ sudo service apache2 restart
    (venv) grader@ubuntu-s-1vcpu-1gb-sgp1-01:/var/www/FlaskApp$
    ```
 
-5. Install required packages:
+6. Install required packages:
 
    ```
    $ pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
