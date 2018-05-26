@@ -277,7 +277,7 @@ Next, run `exit` to go back to the host machine and proceed to the following ste
 
 ### 9. Disabling Root Login
 
-1. Run the following command to log in as `root` from your local machine:
+1. Run the following command from your local machine to log in as `root`:
    ```
    $ ssh root@206.189.151.124 -p 2200
    ```
