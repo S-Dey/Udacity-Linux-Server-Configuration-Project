@@ -453,7 +453,7 @@ $ sudo service apache2 restart
 
 2. Then move to `/var/www/FlaskApp/`:
 
-  ```
+   ```
    $ cd /var/www/FlaskApp/
    ```
 
@@ -466,13 +466,19 @@ $ sudo service apache2 restart
 4. Activate `venv`:
 
    ```
-   source venv/bin/activate
+   $ source venv/bin/activate
    ```
 
    You should now see a prompt like this:
 
    ```console
    (venv) grader@ubuntu-s-1vcpu-1gb-sgp1-01:/var/www/FlaskApp$
+   ```
+
+5. Install required packages:
+
+   ```
+   $ pip3 install 
    ```
 
 #### 13.4. Setting Up Virtual Hosts
