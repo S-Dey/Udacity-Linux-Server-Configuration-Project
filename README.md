@@ -441,7 +441,7 @@ $ sudo service apache2 restart
             ├── new-item.html
             ├── update-item.html
             └── view-item.html
-  ```
+   ```
 
 #### 13.3. Installing `virtualenv` and Installing Required Packages
 
