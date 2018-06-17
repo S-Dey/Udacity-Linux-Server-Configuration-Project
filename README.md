@@ -652,6 +652,13 @@ $ sudo service apache2 restart
    ```
    
    Now you should be able to run the application at <http://206.189.151.124.xip.io/>.
+   
+   **Note**: You might still see the default Apache page despite setting everything up correctly. To resolve it and see your Flask app running, run the following commands in order:
+   
+   ```
+   $ sudo a2dissite 000-default.conf
+   $ sudo service apache2 restart
+   ```
 
 ## References
 
