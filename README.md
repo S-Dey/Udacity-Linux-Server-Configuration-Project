@@ -570,7 +570,7 @@ $ sudo service apache2 restart
 6. Install required packages:
 
    ```
-   $ pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
+   $ sudo pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
    ```
 
 #### 14.4. Setting Up Virtual Hosts
