@@ -547,7 +547,7 @@ $ sudo service apache2 restart
 3. Create a Virtual Environment:
 
    ```
-   $ python3 -m virtualenv venv
+   $ sudo python3 -m virtualenv venv
    ```
 
 4. Change the mode of `venv` to 777:
