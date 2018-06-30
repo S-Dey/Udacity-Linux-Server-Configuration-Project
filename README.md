@@ -169,13 +169,13 @@ This will update all the packages. If the available update is a kernel update, y
    # exit
    ```
 
-   This will take you back to your host machine. After you are back to the host machine, run:
+   This will take you back to your host machine. After you are back to your local machine, run:
 
    ```
    $ ssh root@206.189.151.124 -p 2200
    ```
-
-   The `-p` option explicitly tells what port the SSH server operates on. You should now be able to log in to the server as `root` user.
+   
+   You should now be able to log in to the server as `root`. The `-p` option explicitly tells at what port the SSH server operates on. It now no more operates on port number 22. 
 
 ### 5. Configure Timezone to Use UTC
 
@@ -297,13 +297,7 @@ $ touch authorized_keys
 $ chmod 644 authorized_keys
 ```
 
-After you have run all the above commands, go back to your local machine and copy the content of the public key file `~/.ssh/udacity_project.pub`.
-
-Paste the public key to the virtual server's `authorized_keys` file using `nano` or any other text editor, and save:
-
-```
-$ nano authorized_keys
-```
+After you have run all the above commands, go back to your local machine and copy the content of the public key file `~/.ssh/udacity_project.pub`. Paste the public key to the server's `authorized_keys` file using `nano` or any other text editor, and save.
 
 After that, run `exit`. You would now be back to your local machine. To confirm that it worked, run the following command in your local machine:
 
@@ -317,7 +311,7 @@ Next, run `exit` to go back to the host machine and proceed to the following ste
 
 ### 9. Disabling Root Login
 
-1. Run the following command from your local machine to log in as `root`:
+1. Run the following command on your local machine to log in as `root` in the server:
    ```
    $ ssh root@206.189.151.124 -p 2200
    ```
