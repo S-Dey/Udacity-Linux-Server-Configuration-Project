@@ -130,7 +130,7 @@ As the droplet has been successfully created, you can now log into the server as
   $ ssh root@206.189.151.124
 ```
 
-This will look for the private key in your local machine and log you in automatically if the matching private key is found. After you are logged in, you might see something similar to this:
+This will look for the private key in your local machine and log you in automatically if the corresponding public key is found on your server. After you are logged in, you might see something similar to this:
 
 ![Root login](https://res.cloudinary.com/sdey96/image/upload/v1527151721/terminal_msihzb.png)
 
@@ -659,6 +659,14 @@ $ sudo service apache2 restart
    $ sudo a2dissite 000-default.conf
    $ sudo service apache2 restart
    ```
+
+## Debugging
+
+If you are stuck at any problem that is returning _Internal Server Error_, make sure to check out Apache's error log:
+
+```
+sudo cat /var/log/apache2/error.log
+```
 
 ## References
 
