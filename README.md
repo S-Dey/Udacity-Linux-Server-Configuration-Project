@@ -175,7 +175,7 @@ This will update all the packages. If the available update is a kernel update, y
    $ ssh root@206.189.151.124 -p 2200
    ```
    
-   You should now be able to log in to the server as `root`. The `-p` option explicitly tells at what port the SSH server operates on. It now no more operates on port number 22. 
+   You should now be able to log in to the server as `root` on port 2200. The `-p` option explicitly tells at what port the SSH server operates on. It now no more operates on port number 22. 
 
 ### 5. Configure Timezone to Use UTC
 
