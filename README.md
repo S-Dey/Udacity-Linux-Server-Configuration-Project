@@ -663,7 +663,7 @@ $ sudo service apache2 restart
 
 ## Debugging
 
-If you are stuck at any problem that is returning _Internal Server Error_, make sure to check out Apache's error log:
+If you are stuck at any problem that is returning _Internal Server Error_, make sure to check out Apache's error log for debugging:
 
 ```
 $ sudo cat /var/log/apache2/error.log
