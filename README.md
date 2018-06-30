@@ -50,6 +50,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
             - [14.2. Cloning the Item Catalog Flask application](#142-cloning-the-item-catalog-flask-application)
             - [14.3. Installing `virtualenv` and All the Required Packages](#143-installing-virtualenv-and-all-the-required-packages)
             - [14.4. Setting Up Virtual Hosts](#144-setting-up-virtual-hosts)
+    - [Debugging](#debugging)
     - [References](#references)
 
 <!-- /TOC -->
@@ -665,7 +666,7 @@ $ sudo service apache2 restart
 If you are stuck at any problem that is returning _Internal Server Error_, make sure to check out Apache's error log:
 
 ```
-sudo cat /var/log/apache2/error.log
+$ sudo cat /var/log/apache2/error.log
 ```
 
 ## References
