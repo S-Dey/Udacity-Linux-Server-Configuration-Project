@@ -38,7 +38,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
         - [8. Adding SSH Access to the user `grader`](#8-adding-ssh-access-to-the-user-grader)
         - [9. Disabling Root Login](#9-disabling-root-login)
         - [10. Installing Apache Web Server](#10-installing-apache-web-server)
-        - [11. Installing `pip3`](#11-installing-pip3)
+        - [11. Installing `pip`](#11-installing-pip)
         - [12. Installing and Configuring Git](#12-installing-and-configuring-git)
             - [12.1. Installing Git](#121-installing-git)
             - [12.2. Configuring Git](#122-configuring-git)
@@ -48,8 +48,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
         - [14. Setting Up Apache to Run the Flask Application](#14-setting-up-apache-to-run-the-flask-application)
             - [14.1. Installing `mod_wsgi`](#141-installing-mod_wsgi)
             - [14.2. Cloning the Item Catalog Flask application](#142-cloning-the-item-catalog-flask-application)
-            - [14.3. Installing `virtualenv` and All the Required Packages](#143-installing-virtualenv-and-all-the-required-packages)
-            - [14.4. Setting Up Virtual Hosts](#144-setting-up-virtual-hosts)
+            - [14.3. Setting Up Virtual Hosts](#143-setting-up-the-virtualhost-configuration)
     - [Debugging](#debugging)
     - [References](#references)
 
