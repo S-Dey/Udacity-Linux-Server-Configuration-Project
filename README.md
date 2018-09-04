@@ -621,9 +621,11 @@ $ sudo service apache2 restart
    logging.basicConfig(stream=sys.stderr)
    sys.path.insert(0, "/var/www/FlaskApp/FlaskApp/")
 
-   from FlaskApp import app as application
+   from application import app as application
    ```
-
+   
+   In the above code, replace `application` with the name of the main module.
+   
 6. Restart Apache server:
 
    ```
