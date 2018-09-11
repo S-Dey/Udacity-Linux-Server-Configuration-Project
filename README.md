@@ -38,7 +38,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
         - [8. Adding SSH Access to the user `grader`](#8-adding-ssh-access-to-the-user-grader)
         - [9. Disabling Root Login](#9-disabling-root-login)
         - [10. Installing Apache Web Server](#10-installing-apache-web-server)
-        - [11. Installing `pip3`](#11-installing-pip3)
+        - [11. Installing `pip`](#11-installing-pip)
         - [12. Installing and Configuring Git](#12-installing-and-configuring-git)
             - [12.1. Installing Git](#121-installing-git)
             - [12.2. Configuring Git](#122-configuring-git)
@@ -48,8 +48,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
         - [14. Setting Up Apache to Run the Flask Application](#14-setting-up-apache-to-run-the-flask-application)
             - [14.1. Installing `mod_wsgi`](#141-installing-mod_wsgi)
             - [14.2. Cloning the Item Catalog Flask application](#142-cloning-the-item-catalog-flask-application)
-            - [14.3. Installing `virtualenv` and All the Required Packages](#143-installing-virtualenv-and-all-the-required-packages)
-            - [14.4. Setting Up Virtual Hosts](#144-setting-up-virtual-hosts)
+            - [14.3. Setting Up Virtual Hosts](#143-setting-up-the-virtualhost-configuration)
     - [Debugging](#debugging)
     - [References](#references)
 
@@ -355,9 +354,17 @@ If the installation has succeeded, you should see the following Webpage:
 
 ![Screenshot](https://res.cloudinary.com/sdey96/image/upload/v1527170572/Capture_seeiof.png)
 
-### 11. Installing `pip3`
+### 11. Installing `pip`
 
-The package `pip3` will be required to install certain packages. To install it, run:
+The package `pip` or `pip3` will be required to install certain packages. 
+
+If you are using Python 2, to install it, run:
+
+```
+$ sudo apt install python-pip
+```
+
+If you are using Python 3, to install it, run:
 
 ```
 $ sudo apt install python3-pip
@@ -366,8 +373,15 @@ $ sudo apt install python3-pip
 To confirm whether or not it has been successfully installed, run:
    
 ```
+$ pip --version
+```
+
+Or 
+
+```
 $ pip3 --version
 ```
+(Run either depending upon the Python version you'd want to use.)
 
 You should see something like this if it has been successfully installed:
    
@@ -394,7 +408,7 @@ To continue using `git`, you will have to configure a username and an email:
 ```
 $ git config --global user.name "Subhadeep Dey"
 
-$ git config --global user.email "contact.sdey@gmail.com"
+$ git config --global user.email "myemail@domain.com"
 ```
 
 ### 13. Installing and Configuring PostgreSQL
@@ -444,7 +458,7 @@ $ git config --global user.email "contact.sdey@gmail.com"
    ```sql
    postgres=# CREATE DATABASE catalog;
    postgres=# CREATE USER catalog;
-   postgres=# ALTER ROLE catalog WITH PASSWORD 'password';
+   postgres=# ALTER ROLE catalog WITH PASSWORD 'yourpassword';
    postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
    ```
 
@@ -454,7 +468,15 @@ $ git config --global user.email "contact.sdey@gmail.com"
 
 #### 14.1. Installing `mod_wsgi`
 
-The module `mod_wsgi` will allow your Python applications to run from Apache server. To install it, run the following command:
+The module `mod_wsgi` will allow your Python applications to run from Apache server. 
+
+If you are running Python 2, install it by running the following command:
+   
+```
+$ sudo apt install libapache2-mod-wsgi
+```
+
+If you are running Python 3, run this:
    
 ```
 $ sudo apt install libapache2-mod-wsgi-py3
@@ -483,22 +505,16 @@ $ sudo service apache2 restart
    $ cd FlaskApp/
    ```
 
-3. Clone [this repository](https://github.com/SDey96/Udacity-Item-Catalog-Project/tree/development) as the directory `FlaskApp`:
+3. Clone your GitHub repository of your _Item Catalog application project_ (Flask project) as the directory `FlaskApp`. For example:
 
    ```
    $ sudo git clone https://github.com/SDey96/Udacity-Item-Catalog-Project.git FlaskApp
    ```
 
-4. Move inside the newly created directory:
+4. Change the current working directory to the newly created directory:
 
    ```
    $ cd FlaskApp/
-   ```
-
-5. Checkout to the `development` branch:
-
-   ```
-   $ sudo git checkout development
    ```
 
    The directory tree should now look like this:
@@ -530,50 +546,20 @@ $ sudo service apache2 restart
             └── view-item.html
    ```
 
-#### 14.3. Installing `virtualenv` and All the Required Packages
-
-1. To install `virtualenv`, run the following command:
+5. Install required packages:
 
    ```
-   $ sudo pip3 install virtualenv
+   $ sudo pip install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
    ```
-
-2. Then move to `/var/www/FlaskApp/`:
-
-   ```
-   $ cd /var/www/FlaskApp/
-   ```
-
-3. Create a Virtual Environment:
-
-   ```
-   $ sudo python3 -m virtualenv venv
-   ```
-
-4. Change the mode of `venv` to 777:
-
-   ```
-   $ sudo chmod 777 venv/
-   ```
-5. Activate `venv`:
-
-   ```
-   $ source venv/bin/activate
-   ```
-
-   You should now see a prompt like this:
-
-   ```console
-   (venv) grader@ubuntu-s-1vcpu-1gb-sgp1-01:/var/www/FlaskApp$
-   ```
-
-6. Install required packages:
-
+   
+   Or 
    ```
    $ sudo pip3 install --upgrade Flask SQLAlchemy httplib2 oauth2client requests psycopg2 psycopg2-binary
    ```
+   
+   (Choose either of above depending on the Python version you're using.) 
 
-#### 14.4. Setting Up Virtual Hosts
+#### 14.3. Setting Up the VirtualHost Configuration
 
 1. Run the following command in terminal to set up a file called `FlaskApp.conf` to configure the virtual hosts:
 
@@ -588,11 +574,8 @@ $ sudo service apache2 restart
    <VirtualHost *:80>
       ServerName 206.189.151.124
       ServerAlias 206.189.151.124.xip.io
-      ServerAdmin contact.sdey@gmail.com
-      WSGIDaemonProcess FlaskApp python-path=/var/www \
-        python-home=/var/www/FlaskApp/venv
-      WSGIProcessGroup FlaskApp
-      WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+      ServerAdmin youremail@domain.com
+      WSGIScriptAlias / /var/www/FlaskApp/FlaskApp/flaskapp.wsgi
       <Directory /var/www/FlaskApp/FlaskApp/>
           Require all granted
       </Directory>
@@ -606,6 +589,8 @@ $ sudo service apache2 restart
    </VirtualHost>
 
    ```
+   
+   **Note:** Kindly change the IP address to your own server's public IP and the email to yours. 
 
 3. Enable the virtual host:
 
@@ -624,22 +609,23 @@ $ sudo service apache2 restart
    Apache uses the `.wsgi` file to serve the Flask app. Move to the `/var/www/FlaskApp/` directory and create a file named `flaskapp.wsgi` with following commands:
 
    ```
-   $ cd /var/www/FlaskApp/
+   $ cd /var/www/FlaskApp/FlaskApp/
    $ sudo nano flaskapp.wsgi
    ```
 
    Add the following lines to the `flaskapp.wsgi` file:
 
    ```python
-   #!/var/www/FlaskApp/venv/bin/python3
    import sys
    import logging
    logging.basicConfig(stream=sys.stderr)
-   sys.path.insert(0, "/var/www/FlaskApp/")
+   sys.path.insert(0, "/var/www/FlaskApp/FlaskApp/")
 
-   from FlaskApp import app as application
+   from application import app as application
    ```
-
+   
+   In the above code, replace `application` with the name of the main module.
+   
 6. Restart Apache server:
 
    ```
