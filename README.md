@@ -10,7 +10,7 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ### Technical Information About the Project
 
-- **Server IP Address:** 206.189.151.124
+- **Server IP Address:** 
 - **SSH server access port:** 2200
 - **SSH login username:** grader
 - **Application URL:** http://206.189.151.124.xip.io
@@ -56,9 +56,9 @@ In this project, I have set up an Ubuntu 18.04 image on a DigitalOcean droplet. 
 
 ## Steps to Set up the Server
 
-### 1. Creating the RSA Key Pair
+### 1. Creating an RSA Key Pair
 
-On your local machine, you will first have to set up the public and private key pair. This key pair will be used to authenticate yourself while securely logging in to the server via SSH. The private key will be kept with you in your local machine, and the public key will be stored in the server.
+On your local machine, first set up the public and private key pair. This key pair will be used to authenticate yourself while securely logging in to the server via SSH. The private key will be kept with you in your local machine, and the public key will be stored in the server.
 
 To generate a key pair, run the following command:
 
@@ -94,7 +94,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-You now have a public and private key that you can use to authenticate. The public key is called `udacity_project.pub` and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory.
+You now have a public and private key pair that you can use to authenticate. The public key is called `udacity_project.pub` here and the corresponding private key is called `udacity_project`. The key pair is stored inside the `~/.ssh/` directory.
 
 ### 2. Setting Up a DigitalOcean Droplet
 
